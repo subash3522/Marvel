@@ -18,15 +18,13 @@ function Marvel() {
   const apiUrl = process.env.REACT_APP_BASE_URL
 
 
-//   REACT_APP_BASE_URL = http://gateway.marvel.com/v1/public
-// REACT_APP_API_KEY =
-// REACT_APP_PRIVATE_KEY =
+
 
   const CallMarvelApi = () => {
     try {
       axios
         .get(
-          'http://gateway.marvel.com/v1/public/characters?ts=1&apikey=d659d1321d798a47cc72983456348c34&hash=5f3d304a542792edb78603e37e2a98d1'
+          `${apiUrl}/characters?ts=1&apikey=d659d1321d798a47cc72983456348c34&hash=5f3d304a542792edb78603e37e2a98d1`
         )
         .then((res) => {
           console.log(res.data.results);
