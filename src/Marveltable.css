@@ -1,0 +1,28 @@
+.marvel-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+  
+  .marvel-table th, .marvel-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .marvel-table th {
+    background-color: #f0f0f0;
+  }
+  
+  .marvel-table img {
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: cover;
+  }
+  
+  .marvel-table a {
+    text-decoration: none;
+    color: #000; /* Change link color if needed */
+  }
+  

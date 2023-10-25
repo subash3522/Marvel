@@ -1,6 +1,7 @@
 import "./App.css";
 import Marvel from "./Marvel.js";
 import { useEffect, useState } from "react";
+import Herodetails from './Herodetails.js'
 
 import {
   BrowserRouter as Router,
@@ -47,6 +48,7 @@ function App() {
           <Route path="/" element={<Home filterByIdHandler = {filterByIdHandler} />}></Route>
           <Route path="/MarvelTable" element={<MarvelTable />}></Route>
           <Route path="/Details" element= {<Details  searchById = {searchById}/>}></Route>
+          <Route path="/Herodetail/:idh" element= {<Herodetails/>}></Route>
         </Routes>
       </Router>
       

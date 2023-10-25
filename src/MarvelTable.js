@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import './Marveltable.css'
 import { Link } from "react-router-dom";
 
 function MarvelTable({ detailHandler }) {
@@ -26,10 +27,11 @@ function MarvelTable({ detailHandler }) {
     CallMarvelApi();
   }, []);
 
+
   return (
     <>
       <div className="ps-3">
-        <table className="w-75 ">
+        <table className="w-100 marvel-table ">
           <thead>
             <tr className="border border-success">
               <th>Thumbnail</th>
@@ -41,7 +43,9 @@ function MarvelTable({ detailHandler }) {
           {apiData.map((value, index) => (
             <tbody className="border border-success">
               <tr className="border border-success">
+                
                 <td>
+                <Link to={`/Herodetail/${value.id}`}>
                   {" "}
                   <img
                     style={{
@@ -52,16 +56,18 @@ function MarvelTable({ detailHandler }) {
                     src={value.thumbnail.path + ".jpg"}
                     alt="nothing"
                   />
+                  </Link>
                 </td>
-                <td>{value.name}</td>
-                <td>{value.description}</td>
+                <td><Link to={`/Herodetail/${value.id}`}>{value.name}</Link></td>
+                <td><Link to={`/Herodetail/${value.id}`}>{value.description}</Link></td>
               </tr>
-            </tbody>
+              </tbody>
           ))}
         </table>
       </div>
     </>
   );
 }
+
 
 export default MarvelTable;

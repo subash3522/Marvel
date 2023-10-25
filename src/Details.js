@@ -6,7 +6,7 @@ function Details({searchById}) {
 
 //  const {id} = useParams()
 
-console.log(searchById);
+
   return (
 <>
 {/* <div>{id}58</div> */}
