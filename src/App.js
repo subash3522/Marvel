@@ -15,6 +15,7 @@ import Home from "./Home";
 import MarvelTable from "./MarvelTable";
 import Details from "./Details";
 import axios from "axios";
+import Footer from "./Footer";
 
 function App() {
 
@@ -51,6 +52,7 @@ function App() {
           <Route path="/Herodetail/:idh" element= {<Herodetails/>}></Route>
         </Routes>
       </Router>
+     
       
     </>
   );

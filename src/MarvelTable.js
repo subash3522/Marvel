@@ -41,7 +41,7 @@ function MarvelTable({ detailHandler }) {
           </thead>
 
           {apiData.map((value, index) => (
-            <tbody className="border border-success">
+            <tbody className="border border-success" key={index}>
               <tr className="border border-success">
                 
                 <td>

@@ -10,8 +10,8 @@ function Details({searchById}) {
   return (
 <>
 
-{searchById.map((value)=>(
-        <div>
+{searchById.map((value,index)=>(
+        <div key={index}>
         <div className="card mb-3" style={{ maxWidth: 540 }}>
           <div className="row g-0">
             <div className="col-md-4">
@@ -30,16 +30,16 @@ function Details({searchById}) {
           </div>
         </div>
         <div>Comics Available:{value.comics.available}</div>
-        {value.comics.items.map((value) => (
-          <li>{value.name}</li>
+        {value.comics.items.map((value,index) => (
+          <li key={index}>{value.name}</li>
         ))}
         <div>Series Available:{value.series.available}</div>
-        {value.series.items.map((value) => (
-          <li>{value.name}</li>
+        {value.series.items.map((value,index) => (
+          <li key={index}>{value.name}</li>
         ))}
         <div>Stories Available:{value.stories.available}</div>
-        {value.stories.items.map((value) => (
-          <li>{value.name}</li>
+        {value.stories.items.map((value, index) => (
+          <li key={index}>{value.name}</li>
         ))}
       </div>
       ))}
