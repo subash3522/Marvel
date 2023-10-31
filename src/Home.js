@@ -57,7 +57,7 @@ function Home({ filterByIdHandler }) {
       </form>
         
         
-      <div className="container w-100 d-flex flex-wrap">
+      <div className="container-fluid flex-wrap border" style={{display:'grid',gap:'20px',gridTemplateColumns:'repeat(auto-fit,279px'}}>
         {searchDetails.map((value, index) => (
           <Cards
             key={value.id}

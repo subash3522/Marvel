@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './Marveltable.css'
+import "./Marveltable.css";
 import { Link } from "react-router-dom";
+import Loader from "./Loader";
 
 function MarvelTable({ detailHandler }) {
   const [apiData, setApiData] = useState([]);
+  const [loded, setloded] = useState(true);
 
   const apiUrl = process.env.REACT_APP_BASE_URL;
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -15,8 +17,12 @@ function MarvelTable({ detailHandler }) {
       axios
         .get(`${apiUrl}/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
-        
-          setApiData(res.data.data.results);
+          localStorage.setItem(
+            "localapi",
+            JSON.stringify(res.data.data.results)
+          )
+          setApiData(res.data.data.results)
+          setloded(false);
         });
     } catch (err) {
       console.error(err);
@@ -24,10 +30,17 @@ function MarvelTable({ detailHandler }) {
   };
 
   useEffect(() => {
-    CallMarvelApi();
+    const cachedData = localStorage.getItem("localapi");
+
+    if (cachedData) {
+      setloded(false)
+      setApiData(JSON.parse(cachedData));
+    } else {
+      CallMarvelApi();
+    }
   }, []);
 
-
+  console.log(loded);
   return (
     <>
       <div className="ps-3">
@@ -36,38 +49,43 @@ function MarvelTable({ detailHandler }) {
             <tr className="border border-success">
               <th>Thumbnail</th>
               <th className="ps-3">Name</th>
-              <th>Discription</th>
+              <th>Description</th>
             </tr>
           </thead>
 
-          {apiData.map((value, index) => (
+          {loded?<Loader/>:
+          apiData.map((value, index) => (
             <tbody className="border border-success" key={index}>
               <tr className="border border-success">
-                
                 <td>
-                <Link to={`/Herodetail/${value.id}`}>
-                  {" "}
-                  <img
-                    style={{
-                      objectFit: "cover",
-                      height: "80px",
-                      width: "80px",
-                    }}
-                    src={value.thumbnail.path + ".jpg"}
-                    alt="nothing"
-                  />
+                  <Link to={`/Herodetail/${value.id}`}>
+                    {" "}
+                    <img
+                      style={{
+                        objectFit: "cover",
+                        height: "80px",
+                        width: "80px",
+                      }}
+                      src={value.thumbnail.path + ".jpg"}
+                      alt="nothing"
+                    />
                   </Link>
                 </td>
-                <td><Link to={`/Herodetail/${value.id}`}>{value.name}</Link></td>
-                <td><Link to={`/Herodetail/${value.id}`}>{value.description}</Link></td>
+                <td>
+                  <Link to={`/Herodetail/${value.id}`}>{value.name}</Link>
+                </td>
+                <td>
+                  <Link to={`/Herodetail/${value.id}`}>
+                    {value.description}
+                  </Link>
+                </td>
               </tr>
-              </tbody>
+            </tbody>
           ))}
         </table>
       </div>
     </>
   );
 }
-
 
 export default MarvelTable;

@@ -1,5 +1,4 @@
 import "./App.css";
-import Marvel from "./Marvel.js";
 import { useEffect, useState } from "react";
 import Herodetails from './Herodetails.js'
 

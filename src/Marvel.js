@@ -20,7 +20,7 @@ import {
 } from "react-router-dom";
 function Marvel() {
   const [charName, setCharName] = useState();
-  const [charDiscription, setCharDiscription] = useState();
+  const [charDescription, setCharDescription] = useState();
   const [searchInput, setSearchInput] = useState("");
   const [searchDetails, setSearchDetails] = useState([]);
   const [searchById, setSearchById] = useState([]);
@@ -61,7 +61,7 @@ function Marvel() {
         .get(`${apiUrl}/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
           setCharName(res.data.data.results[index].name);
-          setCharDiscription(res.data.data.results[index].discription);
+          setCharDescription(res.data.data.results[index].description);
         });
     } catch (err) {
       console.error(err);
