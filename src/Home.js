@@ -20,6 +20,8 @@ function Home({ filterByIdHandler }) {
   const [searchInput, setSearchInput] = useState("");
   const [searchDetails, setSearchDetails] = useState([]);
 
+  // REACT_APP_BASE_URL = https://gateway.marvel.com/v1/public
+
   const filterMarvelCharacter = async (name) => {
     if (name === "") {
      
