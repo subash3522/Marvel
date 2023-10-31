@@ -26,7 +26,7 @@ function App() {
   const filterByIdHandler = async (id) => {
     try {
       await axios
-        .get(`${apiUrl}/characters/${id}?ts=1&apikey=${apiKey}&hash=${apiHash}`)
+        .get(`https://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
           const responseData = res.data.data;
           if (responseData && responseData.results) {

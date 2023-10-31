@@ -30,7 +30,7 @@ function Home({ filterByIdHandler }) {
     try {
       await axios
         .get(
-          `${apiUrl}/characters?ts=1&nameStartsWith=${name}&apikey=${apiKey}&hash=${apiHash}`
+          `https://gateway.marvel.com/v1/public/characters?ts=1&nameStartsWith=${name}&apikey=${apiKey}&hash=${apiHash}`
         )
         .then((res) => {
           const responseData = res.data.data

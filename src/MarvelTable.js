@@ -15,7 +15,7 @@ function MarvelTable({ detailHandler }) {
   const CallMarvelApi = async() => {
     try {
     await  axios
-        .get(`${apiUrl}/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
+        .get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
           const responseData = res.data.data; 
           if (responseData && responseData.results) {
