@@ -12,9 +12,9 @@ function MarvelTable({ detailHandler }) {
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiHash = process.env.REACT_APP_PRIVATE_HASH_KEY;
 
-  const CallMarvelApi = () => {
+  const CallMarvelApi = async() => {
     try {
-      axios
+    await  axios
         .get(`${apiUrl}/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
           localStorage.setItem(
