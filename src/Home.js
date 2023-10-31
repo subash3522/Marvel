@@ -33,7 +33,13 @@ function Home({ filterByIdHandler }) {
           `${apiUrl}/characters?ts=1&nameStartsWith=${name}&apikey=${apiKey}&hash=${apiHash}`
         )
         .then((res) => {
-          setSearchDetails(res.data.data.results);
+          const responseData = res.data.data
+          if (responseData && responseData.results) {
+           
+            setSearchDetails(responseData.results);
+           
+          }
+          
         });
     } catch (err) {
       console.error(err);

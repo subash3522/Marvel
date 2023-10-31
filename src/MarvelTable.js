@@ -17,12 +17,15 @@ function MarvelTable({ detailHandler }) {
     await  axios
         .get(`${apiUrl}/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
-          localStorage.setItem(
-            "localapi",
-            JSON.stringify(res.data.data.results)
-          )
-          setApiData(res.data.data.results)
-          setloded(false);
+          const responseData = res.data.data; 
+          if (responseData && responseData.results) {
+            localStorage.setItem('localapi', JSON.stringify(responseData.results));
+            setApiData(responseData.results);
+            setloded(false);
+          }
+
+
+          
         });
     } catch (err) {
       console.error(err);

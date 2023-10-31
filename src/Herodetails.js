@@ -16,7 +16,10 @@ function Herodetails() {
       await axios
         .get(`${apiUrl}/characters/${id}?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
-          setIdHeroDetails(res.data.data.results);
+          const responseData = res.data.data;
+          if (responseData && responseData.results) {
+            setIdHeroDetails(responseData.results);
+          }
         });
     } catch (err) {
       console.error(err);
@@ -28,8 +31,7 @@ function Herodetails() {
   }, []);
   return (
     <>
-      {idHeroDetails.map((value,index) => (
-      
+      {idHeroDetails.map((value, index) => (
         <div key={index}>
           <div className="card mb-3" style={{ maxWidth: 540 }}>
             <div className="row g-0">
@@ -49,15 +51,15 @@ function Herodetails() {
             </div>
           </div>
           <div>Comics Available:{value.comics.available}</div>
-          {value.comics.items.map((value,index) => (
+          {value.comics.items.map((value, index) => (
             <li key={index}>{value.name}</li>
           ))}
           <div>Series Available:{value.series.available}</div>
-          {value.series.items.map((value,index) => (
+          {value.series.items.map((value, index) => (
             <li key={index}>{value.name}</li>
           ))}
           <div>Stories Available:{value.stories.available}</div>
-          {value.stories.items.map((value,index) => (
+          {value.stories.items.map((value, index) => (
             <li key={index}>{value.name}</li>
           ))}
         </div>
