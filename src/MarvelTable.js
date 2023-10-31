@@ -15,7 +15,7 @@ function MarvelTable({ detailHandler }) {
   const CallMarvelApi = () => {
     try {
       axios
-        .get(`${apiUrl}/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
+        .get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${apiHash}`)
         .then((res) => {
           localStorage.setItem(
             "localapi",
