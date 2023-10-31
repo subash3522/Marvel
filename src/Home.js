@@ -24,7 +24,6 @@ function Home({ filterByIdHandler }) {
 
   const filterMarvelCharacter = async (name) => {
     if (name === "") {
-     
       return handleClear();
     }
 
@@ -40,9 +39,9 @@ function Home({ filterByIdHandler }) {
       console.error(err);
     }
   };
-  const handleClear =()=>{
-    setSearchDetails([])
-  }
+  const handleClear = () => {
+    setSearchDetails([]);
+  };
 
   return (
     <>
@@ -52,14 +51,19 @@ function Home({ filterByIdHandler }) {
           type="search"
           placeholder="Search for marvel heroes..."
           aria-label="Search"
-
           onChange={(e) => filterMarvelCharacter(e.target.value)}
         />
         <button className="btn btn-success shadow-lg">Search</button>
       </form>
-        
-        
-      <div className="container-fluid flex-wrap border" style={{display:'grid',gap:'20px',gridTemplateColumns:'repeat(auto-fit,279px'}}>
+
+      <div
+        className="container-fluid flex-wrap border"
+        style={{
+          display: "grid",
+          gap: "20px",
+          gridTemplateColumns: "repeat(auto-fit,279px",
+        }}
+      >
         {searchDetails.map((value, index) => (
           <Cards
             key={value.id}
