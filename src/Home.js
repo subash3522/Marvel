@@ -13,14 +13,14 @@ import {
 } from "react-router-dom";
 
 function Home({ filterByIdHandler }) {
-  const apiUrl = process.env.REACT_APP_BASE_URL;
+  const apiUrl = process.env.REACT_APP_BASE_URLS;
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiHash = process.env.REACT_APP_PRIVATE_HASH_KEY;
 
   const [searchInput, setSearchInput] = useState("");
   const [searchDetails, setSearchDetails] = useState([]);
 
-  // REACT_APP_BASE_URL = https://gateway.marvel.com/v1/public
+  // REACT_APP_BASE_URLS = https://gateway.marvel.com/v1/public
 
   const filterMarvelCharacter = async (name) => {
     if (name === "") {

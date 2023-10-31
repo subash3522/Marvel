@@ -18,7 +18,7 @@ import Footer from "./Footer";
 
 function App() {
 
-  const apiUrl = process.env.REACT_APP_BASE_URL;
+  const apiUrl = process.env.REACT_APP_BASE_URLS;
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiHash = process.env.REACT_APP_PRIVATE_HASH_KEY;
 
